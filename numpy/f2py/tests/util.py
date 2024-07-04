@@ -326,7 +326,7 @@ def build_meson(source_files, module_name=None, **kwargs):
     # compiler stack is on the CI
     try:
         backend.compile()
-    except:
+    except Exception:
         pytest.skip("Failed to compile module")
 
     # Import the compiled module
