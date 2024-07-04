@@ -1,10 +1,15 @@
-import re, textwrap, os
+import os
+import re
+import textwrap
 from os import sys, path
 from distutils.errors import DistutilsError
 
 is_standalone = __name__ == '__main__' and __package__ is None
 if is_standalone:
-    import unittest, contextlib, tempfile, shutil
+    import contextlib
+    import tempfile
+    import shutil
+    import unittest
     sys.path.append(path.abspath(path.join(path.dirname(__file__), "..")))
     from ccompiler_opt import CCompilerOpt
 
