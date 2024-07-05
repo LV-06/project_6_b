@@ -268,7 +268,7 @@ class FCompiler(CCompiler):
             self.set_command(k, v)
 
     def set_command(self, key, value):
-        if not key in self._executable_keys:
+        if key not in self._executable_keys:
             raise ValueError(
                 "unknown executable '%s' for class %s" %
                 (key, self.__class__.__name__))

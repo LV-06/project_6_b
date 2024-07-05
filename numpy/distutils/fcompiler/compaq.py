@@ -85,11 +85,11 @@ class CompaqVisualFCompiler(FCompiler):
             else:
                 raise
         except OSError as e:
-            if not "vcvarsall.bat" in str(e):
+            if "vcvarsall.bat" not in str(e):
                 print("Unexpected OSError in", __file__)
                 raise
         except ValueError as e:
-            if not "'path'" in str(e):
+            if "'path'" not in str(e):
                 print("Unexpected ValueError in", __file__)
                 raise
 

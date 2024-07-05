@@ -220,11 +220,11 @@ def parse_meta(config):
     d = dict(config.items('meta'))
 
     for k in ['name', 'description', 'version']:
-        if not k in d:
+        if k not in d:
             raise FormatError("Option %s (section [meta]) is mandatory, "
                 "but not found" % k)
 
-    if not 'requires' in d:
+    if 'requires' not in d:
         d['requires'] = []
 
     return d
@@ -267,7 +267,7 @@ def parse_config(filename, dirs=None):
             vars[name] = _escape_backslash(value)
 
     # Parse "normal" sections
-    secs = [s for s in config.sections() if not s in ['meta', 'variables']]
+    secs = [s for s in config.sections() if s not in ['meta', 'variables']]
     sections = {}
 
     requires = {}
@@ -291,7 +291,7 @@ def _read_config_imp(filenames, dirs=None):
 
             # Update var dict for variables not in 'top' config file
             for k, v in nvars.items():
-                if not k in vars:
+                if k not in vars:
                     vars[k] = v
 
             # Update sec dict
@@ -306,9 +306,9 @@ def _read_config_imp(filenames, dirs=None):
     # FIXME: document this. If pkgname is defined in the variables section, and
     # there is no pkgdir variable defined, pkgdir is automatically defined to
     # the path of pkgname. This requires the package to be imported to work
-    if not 'pkgdir' in vars and "pkgname" in vars:
+    if 'pkgdir' not in vars and "pkgname" in vars:
         pkgname = vars["pkgname"]
-        if not pkgname in sys.modules:
+        if pkgname not in sys.modules:
             raise ValueError("You should import %s to get information on %s" %
                              (pkgname, meta["name"]))
 
