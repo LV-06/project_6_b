@@ -95,6 +95,9 @@ __all__ = [
 
 # we don't need all these imports, but we need to keep them for compatibility
 # for users using np._core.numerictypes.UPPER_TABLE
+from ._string_helpers import (  # noqa: F401
+    english_lower, english_upper, english_capitalize, LOWER_TABLE, UPPER_TABLE
+)
 
 from ._type_aliases import (
     sctypeDict, allTypes, sctypes
@@ -103,7 +106,7 @@ from ._dtype import _kind_name
 
 # we don't export these for import *, but we do want them accessible
 # as numerictypes.bool, etc.
-from builtins import bool, int, float, complex, str, bytes
+from builtins import bool, int, float, complex, object, str, bytes  # noqa: F401
 
 
 # We use this later

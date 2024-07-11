@@ -26,6 +26,7 @@ def test_lazy_load():
         np = module
 
         # test a subpackage import
+        from numpy.lib import recfunctions  # noqa: F401
 
         # test triggering the import of the package
         np.ndarray
