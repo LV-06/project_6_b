@@ -566,7 +566,7 @@ def _get_directories(list_of_sources):
     direcs = []
     for f in list_of_sources:
         d = os.path.split(f)
-        if d[0] != '' and not d[0] in direcs:
+        if d[0] != '' and d[0] not in direcs:
             direcs.append(d[0])
     return direcs
 
@@ -1577,7 +1577,7 @@ class Configuration:
 
         # Sometimes, depends is not set up to an empty list by default, and if
         # depends is not given to add_library, distutils barfs (#1134)
-        if not 'depends' in build_info:
+        if 'depends' not in build_info:
             build_info['depends'] = []
 
         self._fix_paths_dict(build_info)
