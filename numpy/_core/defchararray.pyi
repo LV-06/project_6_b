@@ -1,9 +1,10 @@
 from typing import (
     Literal as L,
     overload,
+    TypeAlias,
     TypeVar,
     Any,
-    SupportsIndex, 
+    SupportsIndex,
     SupportsInt,
 )
 
@@ -16,8 +17,7 @@ from numpy import (
     int_,
     object_,
     _OrderKACF,
-    _ShapeType_co, 
-    _CharDType, 
+    _ShapeType_co,
     _SupportsBuffer,
 )
 
@@ -32,8 +32,9 @@ from numpy._typing import (
 
 from numpy._core.multiarray import compare_chararrays as compare_chararrays
 
-_SCT = TypeVar("_SCT", str_, bytes_)
-_CharArray = chararray[Any, dtype[_SCT]]
+_SCT = TypeVar("_SCT", bound=str_ | bytes_)
+_CharDType = TypeVar("_CharDType", bound=dtype[str_ | bytes_])
+_CharArray: TypeAlias = chararray[Any, dtype[_SCT]]
 
 class chararray(ndarray[_ShapeType_co, _CharDType]):
     @overload
